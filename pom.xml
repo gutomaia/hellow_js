@@ -16,8 +16,48 @@
 				<extensions>true</extensions>
 				<configuration>
 					<descriptor>${basedir}/src/main/assembler/assembler.xml</descriptor>
+					<compressor>jsmin</compressor>
+					<browser>ie*</browser>
+					<firefoxPath>/usr/bin/firefox</firefoxPath>
+					<iePath>/</iePath>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>de.berlios.jsunit</groupId>
+		                <artifactId>jsunit-maven2-plugin</artifactId>
+		                <executions>
+						<execution>
+							<id>test</id>
+							<configuration>
+								<printSummary>true</printSummary>
+								<sourceDirectory>${basedir}/src/main/javascript</sourceDirectory>
+								<sources>
+									<source>hellow/protocol/notification.js</source>
+									<source>hellow/protocol/msnp.js</source>
+									<source>hellow/protocol/msnp8.js</source>
+								</sources>
+								<testSourceDirectory>${basedir}/src/test/javascript</testSourceDirectory>
+								<reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
+								<testSuites>
+									<testSuite>
+										<name>ProtocolSuite</name>
+										<type>TESTCASES</type>
+										<includes>
+											<include>hellow/protocol/*.js</include>
+										</includes>
+									</testSuite>
+								</testSuites>
+							</configuration>
+							<goals>
+								<goal>jsunit-test</goal>
+							</goals>
+						</execution>
+				</executions>
+				<configuration>
+					<property name="jsUnit.browserFileNames" value="/usr/bin/firefox"/>
+				</configuration>
+			    </plugin>
+
 		</plugins>
 	</build>
 </project>
