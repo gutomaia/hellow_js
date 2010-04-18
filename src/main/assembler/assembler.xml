@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<assembler>
+	<scripts>
+		<script>
+			<fileName>hellow.js</fileName>
+			<includes>
+				<include>hellow/protocol/msnp8.js</include>
+				<include>hellow/protocol/notification.js</include>
+				<include>hellow/protocol/msnp.js</include>
+				<include>hellow/protocol/msnp8.js</include>
+			</includes>
+		</script>
+	</scripts>
+</assembler>
+

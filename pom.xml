@@ -14,6 +14,9 @@
 				<groupId>org.codehaus.mojo.javascript</groupId>
 				<artifactId>javascript-maven-plugin</artifactId>
 				<extensions>true</extensions>
+				<configuration>
+					<descriptor>${basedir}/src/main/assembler/assembler.xml</descriptor>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
