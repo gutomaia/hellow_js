@@ -33,13 +33,12 @@ Notification.prototype.authenticate = function (lc){
 	this._passport = this._authenticationHandle.authenticate(this._username,this._password,lc);
 }
 
-/*
+
 Notification.prototype.connect = function (host, port){
-	super.connect(host,port);
-	send(ver());
-	listen();
+	//_super.connect(host,port);
+	this.send(ver());
+	this.listen();
 }
-*/
 
 Notification.prototype.login = function (username, password) {
 	this._username = username;

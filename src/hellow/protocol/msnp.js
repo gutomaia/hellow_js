@@ -50,7 +50,7 @@ Msnp.prototype.send = function (command){
 }
 
 Msnp.prototype.connect = function (host, port) {
-	//this._connectionHandle.connect(host,port);
+	this._connectionHandle.connect(host,port);
 }
 
 Msnp.prototype.disconnect = function () {
