@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>net.guto.hellow</groupId>
+	<artifactId>hellowJs</artifactId>
+	<name>HellowJs</name>
+	<packaging>javascript</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<build>
+		<outputDirectory>target/scripts</outputDirectory>
+		<testOutputDirectory>target/test-scripts</testOutputDirectory>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo.javascript</groupId>
+				<artifactId>javascript-maven-plugin</artifactId>
+				<extensions>true</extensions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
