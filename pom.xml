@@ -41,10 +41,10 @@
 								<reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
 								<testSuites>
 									<testSuite>
-										<name>ProtocolTest</name>
+										<name>protocol_test</name>
 										<type>TESTCASES</type>
 										<includes>
-											<include>hellow/*.js</include>
+											<include>*.js</include>
 										</includes>
 									</testSuite>
 								</testSuites>
