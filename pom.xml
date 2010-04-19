@@ -32,18 +32,19 @@
 								<printSummary>true</printSummary>
 								<sourceDirectory>${basedir}/src/main/javascript</sourceDirectory>
 								<sources>
-									<source>hellow/protocol/notification.js</source>
+									<source>hellow/protocol/socket_connection.js</source>
 									<source>hellow/protocol/msnp.js</source>
+									<source>hellow/protocol/notification.js</source>
 									<source>hellow/protocol/msnp8.js</source>
 								</sources>
 								<testSourceDirectory>${basedir}/src/test/javascript</testSourceDirectory>
 								<reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
 								<testSuites>
 									<testSuite>
-										<name>ProtocolSuite</name>
+										<name>ProtocolTest</name>
 										<type>TESTCASES</type>
 										<includes>
-											<include>hellow/protocol/*.js</include>
+											<include>hellow/*.js</include>
 										</includes>
 									</testSuite>
 								</testSuites>
@@ -53,11 +54,32 @@
 							</goals>
 						</execution>
 				</executions>
-				<configuration>
-					<property name="jsUnit.browserFileNames" value="/usr/bin/firefox"/>
-				</configuration>
-			    </plugin>
-
+			</plugin>
 		</plugins>
 	</build>
+	<profiles>
+		<profile>
+			<id>hudson</id>
+			<properties>
+			<appserver.home>/path/to/appserver</appserver.home>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>de.berlios.jsunit</groupId>
+						<artifactId>jsunit-maven2-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>test</id>
+								<configuration>
+									<skip>true</skip>
+									<skipExec>true</skipExec>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>

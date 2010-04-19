@@ -36,7 +36,7 @@ Notification.prototype.authenticate = function (lc){
 
 Notification.prototype.connect = function (host, port){
 	//_super.connect(host,port);
-	this.send(ver());
+	this.send(this.ver());
 	this.listen();
 }
 
@@ -63,7 +63,7 @@ Notification.prototype.addContactListener = function (contactListener){
 Notification.prototype.execute = function (command) {};
 
 Notification.prototype.ver = function () {
-	return "VER "+ this._trid + " " + this.PROTOCOL_VERSION + " CVR0" + EL;
+	return "VER "+ this._trid + " " + this.PROTOCOL_VERSION + " CVR0" + this.EL;
 };
 Notification.prototype.cvr = function () {
 	return "CVR " + this._trid + " " + this.LOCALE_ID + " " + this.OS_TYPE + " " + this.OS_VERSION + " " + this.CPU_ARCHITECTURE + " " + this.CLIENT_NAME + " " + this.CLIENT_VERSION + " " + this.CLIENT_ID + " " + this._username + this.EL;

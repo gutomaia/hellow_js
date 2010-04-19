@@ -27,28 +27,33 @@
 //}
 
 function SocketConnectionHandle () {
-	this._socket = null;
-	
+
 }
 
-SocketConnectionHandle.prototype.getSocket(){
+SocketConnectionHandle.prototype = {
+	_socket:null
+}
+
+SocketConnectionHandle.prototype.getSocket = function() {
 	return this._socket;
 }
 
-SocketConnectionHandle.prototype.connect(host, port){
+SocketConnectionHandle.prototype.connect = function(host, port){
 	this._socket = new WebSocket('ws://'+host+':'+port);
-	this._socket.onmessage = function (event) {alert(event.data));}; 
+	//this._socket.onmessage = function (event) {alert(event.data));}; 
 }
 
-SocketConnectionHandle.prototype.send(cmd) {
+SocketConnectionHandle.prototype.disconnect = function(){
+}
+
+SocketConnectionHandle.prototype.send = function (cmd) {
 	this._socket;
-
 }
 
-SocketConnectionHandle.prototype.nextCommand() {
+SocketConnectionHandle.prototype.nextCommand = function () {
 }
 
-SocketConnectionHandle.prototype.hasMoreCommands() {
+SocketConnectionHandle.prototype.hasMoreCommands = function() {
 
 }
 
@@ -93,7 +98,7 @@ SocketConnectionHandle.prototype.hasMoreCommands() {
 //			flush();
 //		}
 
-		}
+//		}
 
 //		public function nextCommand(): String {
 //		if ($this->getSocket()) {

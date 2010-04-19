@@ -14,6 +14,7 @@ function alert(test){
 //abstract
 
 function Msnp () {
+	this._connectionHandle = new SocketConnectionHandle();
 };
 
 Msnp.prototype = {
@@ -45,8 +46,8 @@ Msnp.prototype.execute = function (){
 //final
 Msnp.prototype.send = function (command){
 	this._connectionHandle.send(command);
-	this.onCommandSended(command);
-	_trid++;
+//	this.onCommandSended(command);
+	this._trid++;
 }
 
 Msnp.prototype.connect = function (host, port) {
@@ -59,10 +60,10 @@ Msnp.prototype.disconnect = function () {
 
 Msnp.prototype.listen = function () {
 	var command = "";
-	while (_connectionHandle.hasMoreCommands()){
-		command = _connectionHandle.nextCommand();
+	while (this._connectionHandle.hasMoreCommands()){
+		command = this._connectionHandle.nextCommand();
 		this.execute(command);
-		onCommandReceived(command);
+		//this.onCommandReceived(command);
 	}
 	this._connectionHandle.disconnect();
 }
