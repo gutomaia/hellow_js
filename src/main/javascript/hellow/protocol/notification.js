@@ -29,21 +29,28 @@ function Notification () {
 
 Notification.prototype = new Msnp();
 
+
 Notification.prototype.authenticate = function (lc){
 	this._passport = this._authenticationHandle.authenticate(this._username,this._password,lc);
 }
 
+Notification.prototype.setAuthenticationHandle = function (authenticationHandle){
+	this._authenticationHandle = authenticationHandle;
+}
+
+Notification.prototype.superConnect = Msnp.prototype.connect;
 
 Notification.prototype.connect = function (host, port){
-	//_super.connect(host,port);
+	this.superConnect(host,port);
 	this.send(this.ver());
-	this.listen();
+	//this.listen();
 }
 
 Notification.prototype.login = function (username, password) {
 	this._username = username;
 	this._password = password;
 	this.connect(this.MSN_HOST, this.MSN_PORT);	
+
 };
 
 Notification.prototype.logout = function () {

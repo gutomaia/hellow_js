@@ -36,6 +36,10 @@
 									<source>hellow/protocol/msnp.js</source>
 									<source>hellow/protocol/notification.js</source>
 									<source>hellow/protocol/msnp8.js</source>
+									<source>hellow/mock/mock_connection.js</source>
+									<source>hellow/mock/mock_authentication.js</source>
+									<source>hellow/mock/mock_client.js</source>
+				
 								</sources>
 								<testSourceDirectory>${basedir}/src/test/javascript</testSourceDirectory>
 								<reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
@@ -44,7 +48,7 @@
 										<name>protocol_test</name>
 										<type>TESTCASES</type>
 										<includes>
-											<include>*.js</include>
+											<include>protocol_test.js</include>
 										</includes>
 									</testSuite>
 								</testSuites>
@@ -61,7 +65,7 @@
 		<profile>
 			<id>hudson</id>
 			<properties>
-			<appserver.home>/path/to/appserver</appserver.home>
+				<appserver.home>/path/to/appserver</appserver.home>
 			</properties>
 			<build>
 				<plugins>
@@ -82,4 +86,12 @@
 			</build>
 		</profile>
 	</profiles>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>codehaus</id>
+			<name>Javascript Maven Plugin</name>
+			<url>http://snapshots.repository.codehaus.org/</url>
+		</pluginRepository>
+	</pluginRepositories>
+
 </project>

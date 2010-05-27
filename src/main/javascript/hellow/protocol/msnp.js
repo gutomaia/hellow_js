@@ -11,8 +11,6 @@ function alert(test){
 	java.lang.System.out.println(test);
 };
 
-//abstract
-
 function Msnp () {
 	this._connectionHandle = new SocketConnectionHandle();
 };

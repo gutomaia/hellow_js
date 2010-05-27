@@ -11,16 +11,16 @@ function Msnp8(){
 	Notification.call(this);
 	this.execute = function (command) {
 		command = "VER";
+		alert(command);
 		switch(command){
 			case "VER":
 				return this.send(this.cvr());
+				break;
+			case "CVR":
+				return this.send(this.usr());
+				break;
 		}
 	}
 }
 
 Msnp8.prototype  = new Notification();
-
-msn = new Msnp8();
-msn.login("hellowgmn@hotmail.com","123456");
-
-//alert("teste");

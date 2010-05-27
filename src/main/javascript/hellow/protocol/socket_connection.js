@@ -27,7 +27,6 @@
 //}
 
 function SocketConnectionHandle () {
-
 }
 
 SocketConnectionHandle.prototype = {
