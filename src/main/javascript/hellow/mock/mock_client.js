@@ -35,4 +35,3 @@ MockClient.prototype.onAddGroup = function(group){
 
 MockClient.prototype.onRemoveGroup = function(group){
 }
-

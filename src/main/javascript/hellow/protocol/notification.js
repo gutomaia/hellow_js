@@ -25,10 +25,11 @@ function Notification () {
 	this._password = null;
 	this._passport = null;
 	this._connectionListener = null;
-};
+	this._contactListener = null;
+	this._presenceListener = null;	
+}
 
 Notification.prototype = new Msnp();
-
 
 Notification.prototype.authenticate = function (lc){
 	this._passport = this._authenticationHandle.authenticate(this._username,this._password,lc);
@@ -66,21 +67,91 @@ Notification.prototype.addContactListener = function (contactListener){
 	this._contactListener = contactListener;
 }
 
+Notification.prototype.addContactListener = function (contactListener){
+	this._contactListener = contactListener;
+}
+
+Notification.prototype.addPresenceListener = function (presenceListener){
+	this._presenceListener = presenceListener;
+}
+
+//Connection
+Notification.prototype.onLogged = function (){
+	if (this._connectionListener != null) this._connectionListener.onLogged();
+}
+
+Notification.prototype.onConnected = function (){
+	if (this._connectionListener != null) this._connectionListener.onConnected();
+}
+
+//Contact
+Notification.prototype.onAddContact = function (user, nick, lists, groups){
+	if(this._contactListener != null) this._contactListener.onAddContact({'user':user,'nick':nick,'lists':lists,'groups':groups});
+}
+
+Notification.prototype.onRemoveContact = function (user){
+//if(!empty($this->_contactListener)) $this->_contactListener->onRemoveContact($user);
+}
+
+Notification.prototype.onAddGroup = function (id, name, unk){
+	if(this._contactListener != null) this._contactListener.onAddGroup({'group_id':id,'name':name});
+}
+
+Notification.prototype.onRemoveGroup = function (group){}
+
+// Presence
+Notification.prototype.onContactOnline = function (contact){
+//	if(!empty($this->_presenceListener)) $this->_presenceListener->onContactOnline($contact);
+}
+
+Notification.prototype.onContactOffline = function (contact){
+//	if(!empty($this->_presenceListener)) $this->_presenceListener->onContactOffline($contact);
+}
+
+Notification.prototype.onContactAvaiable = function (contact){
+//	if(!empty($this->_presenceListener)) $this->_presenceListener->onContactAvaiable($contact);
+}
+
+Notification.prototype.onContactBusy = function (contact){
+//	if(!empty($this->_presenceListener)) $this->_presenceListener->onContactBusy($contact);
+}
+
+Notification.prototype.onContactIdle = function (contact){
+//if(!empty($this->_presenceListener)) $this->_presenceListener->onContactIdle($contact);
+}
+
+Notification.prototype.onContactBeRightBack = function (contact){
+//if(!empty($this->_presenceListener)) $this->_presenceListener->onContactBeRightBack($contact);
+}
+
+Notification.prototype.onContactAway = function (contact){
+//	if(!empty($this->_presenceListener)) $this->_presenceListener->onContactAway($contact);
+}
+
+Notification.prototype.onContactOnPhone = function (contact){
+//if(!empty($this->_presenceListener)) $this->_presenceListener->onContactOnPhone($contact);
+}
+
+Notification.prototype.onContactOutLunch = function (contact){
+//if(!empty($this->_presenceListener)) $this->_presenceListener->onContactOutLunch($contact);
+}
+
 //abstract
 Notification.prototype.execute = function (command) {};
 
 Notification.prototype.ver = function () {
 	return "VER "+ this._trid + " " + this.PROTOCOL_VERSION + " CVR0" + this.EL;
 };
+
 Notification.prototype.cvr = function () {
 	return "CVR " + this._trid + " " + this.LOCALE_ID + " " + this.OS_TYPE + " " + this.OS_VERSION + " " + this.CPU_ARCHITECTURE + " " + this.CLIENT_NAME + " " + this.CLIENT_VERSION + " " + this.CLIENT_ID + " " + this._username + this.EL;
 };
+
 Notification.prototype.usr = function () {
 	if (this._passport == null)
 		return "USR " + this._trid + " TWN I " + this._username + this.EL;
 	 else 
 		return "USR " + this._trid + " TWN S " + this._passport + this.EL;
-	
 };
 
 Notification.prototype.syn = function () {

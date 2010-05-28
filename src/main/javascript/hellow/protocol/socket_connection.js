@@ -9,10 +9,10 @@
 
 //var socket = new WebSocket(location);
 //socket.onopen = function(event) {
-//  socket.postMessage(“Hello, WebSocket”);
+//  socket.postMessage(Hello, WebSocket);
 //}
 //socket.onmessage = function(event) { alert(event.data); }
-//socket.onclose = function(event) { alert(“closed”); }
+//socket.onclose = function(event) { alert(closed); }
 
 //if ("WebSocket" in window) {
 //  var ws = new WebSocket("ws://example.com/service");
