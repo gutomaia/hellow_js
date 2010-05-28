@@ -32,6 +32,7 @@
 								<printSummary>true</printSummary>
 								<sourceDirectory>${basedir}/src/main/javascript</sourceDirectory>
 								<sources>
+									<source>lib/md5_crypt.js</source><!--not done by me-->
 									<source>hellow/protocol/socket_connection.js</source>
 									<source>hellow/protocol/msnp.js</source>
 									<source>hellow/protocol/notification.js</source>
@@ -39,7 +40,6 @@
 									<source>hellow/mock/mock_connection.js</source>
 									<source>hellow/mock/mock_authentication.js</source>
 									<source>hellow/mock/mock_client.js</source>
-				
 								</sources>
 								<testSourceDirectory>${basedir}/src/test/javascript</testSourceDirectory>
 								<reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
@@ -93,5 +93,4 @@
 			<url>http://snapshots.repository.codehaus.org/</url>
 		</pluginRepository>
 	</pluginRepositories>
-
 </project>

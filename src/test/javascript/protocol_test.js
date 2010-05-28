@@ -35,22 +35,11 @@ function ProtocolTest_setUp(){
 	this._msn.login("dvader@empire.com", "ih8jedis");
 }
 
-function ProtocolTest_testDivideByZero(){
-	var zero = 0;
-	this.assertEquals("Infinity", 8/zero);
-}
-
-function ProtocolTest_testMe(){
-	this.assertTrue(true);
-}
-
-/*
 function ProtocolTest_testChallenger(){
 	var chl = "29409134351025259292";
 	var digest = this._msn.challenger(chl);
 	this.assertEquals("d0c1178c689350104350d99f8c36ed9c", digest);
 }
-*/
 
 function ProtocolTest_testSession(){
 	//Sends the MSN Client version
