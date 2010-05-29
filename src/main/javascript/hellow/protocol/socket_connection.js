@@ -39,17 +39,25 @@ SocketConnectionHandle.prototype.getSocket = function() {
 
 SocketConnectionHandle.prototype.connect = function(host, port){
 	this._socket = new WebSocket('ws://'+host+':'+port);
+	this._socket.onmessage = function(event) {
+		this.send(event.data);
+	};
+	this._socket.onclose = function(event) {
+		this.disconnect();
+	}
 	//this._socket.onmessage = function (event) {alert(event.data));}; 
 }
 
 SocketConnectionHandle.prototype.disconnect = function(){
+	this._socket = null;	
 }
 
 SocketConnectionHandle.prototype.send = function (cmd) {
-	this._socket;
+	this._socket.send(cmd);
 }
 
 SocketConnectionHandle.prototype.nextCommand = function () {
+
 }
 
 SocketConnectionHandle.prototype.hasMoreCommands = function() {
@@ -58,7 +66,6 @@ SocketConnectionHandle.prototype.hasMoreCommands = function() {
 
 //	public class SocketConnection implements ConnectionHandle {
 //		private var _socket:Socket;
-
 //		public function SocketConnection(){}
 
 //		private function getSocket():Socket {
@@ -118,4 +125,3 @@ SocketConnectionHandle.prototype.hasMoreCommands = function() {
 //		public function hasMoreCommands():Boolean {
 //			return true;
 //		}
-

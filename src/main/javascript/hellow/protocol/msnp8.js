@@ -46,7 +46,6 @@ function Msnp8(){
 				break;
 			case "LST" :
 				//if (sizeof($params) == 5) {						
-				//	$this->onAddContact($params[1], $params[2], $params[3], $params[4]);
 					this.onAddContact(params[1], params[2], params[3], params[4]);
 				//} else {
 					//this.onAddContact(params[1], params[2], params[3]);
@@ -71,7 +70,7 @@ function Msnp8(){
 			case "RNG" :
 				//RNG sessid address authtype ticket invitepassport invitename\r\n
 				//RNG 876505971 65.54.228.15:1863 CKI 4216622.2513084 username@hotmail.com Nick
-				//Msnc1::enter($params[1], $params[2], $params[3], $params[4], $params[5]);
+				//Msnc1::enter(params[1], params[2], params[3], params[4], params[5]);
 				break;
 			case "CHG" :
 				this.onConnected();
