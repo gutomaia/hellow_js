@@ -4,7 +4,7 @@
 		<script>
 			<fileName>hellow.js</fileName>
 			<includes>
-				<include>hellow/socket_connection.js</include>
+				<include>hellow/protocol/socket_connection.js</include>
 				<include>hellow/protocol/msnp.js</include>
 				<include>hellow/protocol/notification.js</include>
 				<include>hellow/protocol/msnp8.js</include>
