@@ -12,7 +12,7 @@
 	<prerequisites>
 		<maven>2.0.9</maven>
 	</prerequisites>
-
+<!--
 	<developers>
 		<developer>
 			<id>gutomaia</id>
@@ -20,7 +20,7 @@
 			<email>guto@guto.net</email>
 		</developer>
 	<developers>
-
+-->
 	<build>
 		<outputDirectory>target/scripts</outputDirectory>
 		<testOutputDirectory>target/test-scripts</testOutputDirectory>
