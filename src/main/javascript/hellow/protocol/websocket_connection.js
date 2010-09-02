@@ -26,21 +26,26 @@
 //  // the browser doesn't support WebSocket.
 //}
 
-function SocketConnectionHandle () {
+function WebSocketConnectionHandle () {
 }
 
-SocketConnectionHandle.prototype = {
+WebSocketConnectionHandle.prototype = {
 	_socket:null
+	_commands:null
 }
 
-SocketConnectionHandle.prototype.getSocket = function() {
+WebSocketConnectionHandle.prototype.getSocket = function() {
 	return this._socket;
 }
 
-SocketConnectionHandle.prototype.connect = function(host, port){
-	this._socket = new WebSocket('ws://'+host+':'+port);
+WebSocketConnectionHandle.prototype.connect = function(host, port){
+	//this._socket = new WebSocket('ws://'+host+':'+port);
+	this._commands = new Array();
+	this._socket = new WebSocket('ws://'+host+':'+port+'/test/WS');
 	this._socket.onmessage = function(event) {
-		this.send(event.data);
+		_commands.push(evend.data);
+		
+		//this.send(event.data);
 	};
 	this._socket.onclose = function(event) {
 		this.disconnect();
@@ -48,20 +53,21 @@ SocketConnectionHandle.prototype.connect = function(host, port){
 	//this._socket.onmessage = function (event) {alert(event.data));}; 
 }
 
-SocketConnectionHandle.prototype.disconnect = function(){
+WebSocketConnectionHandle.prototype.disconnect = function(){
 	this._socket = null;	
 }
 
-SocketConnectionHandle.prototype.send = function (cmd) {
+WebSocketConnectionHandle.prototype.send = function (cmd) {
 	this._socket.send(cmd);
 }
 
-SocketConnectionHandle.prototype.nextCommand = function () {
-
+WebSocketConnectionHandle.prototype.nextCommand = function () {
+	var msg = this._commands.shift();
+	return msg;
 }
 
-SocketConnectionHandle.prototype.hasMoreCommands = function() {
-
+WebSocketConnectionHandle.prototype.hasMoreCommands = function() {
+	return true;
 }
 
 //	public class SocketConnection implements ConnectionHandle {

@@ -1,4 +1,4 @@
-/*  HellowPhp, alpha version
+/*  HellowJs, alpha version
  *  (c) 2009 Gustavo Maia Neto (gutomaia)
  *
  *  HellowJs and all other Hellow flavors will be always

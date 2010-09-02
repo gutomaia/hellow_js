@@ -12,7 +12,7 @@ function alert(test){
 };
 
 function Msnp () {
-	this._connectionHandle = new SocketConnectionHandle();
+	this._connectionHandle = new WebSocketConnectionHandle();
 };
 
 Msnp.prototype = {
