@@ -2,7 +2,7 @@
  *  (c) 2009 Gustavo Maia Neto (gutomaia)
  *
  *  HellowJs and all other Hellow flavors is and will be always
- *  freely distributable under the terms of an GPLv3 licence.
+ *  freely distributed under the terms of an GPLv3 license.
  *
  *  Human Knowledge belongs to the World!
  *--------------------------------------------------------------------------*/
