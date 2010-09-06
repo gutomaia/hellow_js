@@ -45,7 +45,7 @@ function ProtocolTest_testSession(){
 	//Sends the MSN Client version
 	//this.send("VER 1 MSNP8 CVR0\r\n");
 
-	//acknolodge
+	//Acknowledge
 	this.receive("VER 1 MSNP8 CVR0\r\n");
 	this.send("CVR 2 0x0409 win 4.10 i386 MSNMSGR 6.0.0602 MSMSGS dvader@empire.com\r\n");
 
@@ -65,6 +65,8 @@ function ProtocolTest_testSession(){
 	this.receive("USR 6 TWN S lc=1033,id=507,tw=40,fs=1,ru=http%3A%2F%2Fmessenger%2Emsn%2Ecom,ct=1062764229,kpp=1,kv=5,ver=2.1.0173.1,tpf=43f8a4c8ed940c04e3740be46c4d1619\r\n");
 	this.send("USR 7 TWN S t=53*1hAu8ADuD3TEwdXoOMi08sD*2!cMrntTwVMTjoB3p6stWTqzbkKZPVQzA5NOt19SLI60PY!b8K4YhC!Ooo5ug$$&p=5eKBBC!yBH6ex5mftp!a9DrSb0B3hU8aqAWpaPn07iCGBw5akemiWSd7t2ot!okPvIR!Wqk!MKvi1IMpxfhkao9wpxlMWYAZ!DqRfACmyQGG112Bp9xrk04!BVBUa9*H9mJLoWw39m63YQRE1yHnYNv08nyz43D3OnMcaCoeSaEHVM7LpR*LWDme29qq2X3j8N\r\n");
 	this.assertFalse("User not logged, ConnectionListener::onLogged shoudn't be called", this._mockClient.logged);
+	
+	//Logged
 	this.receive("USR 7 OK dvader@empire.com Dart%20Vader 1 0\r\n");
 	this.assertTrue("User logged, ConnectionListener::onLogged should be called",this._mockClient.logged);
 	this.send("SYN 1 0\r\n");
@@ -73,6 +75,7 @@ function ProtocolTest_testSession(){
 	this.receive("BLP AL\r\n");
 	this.receive("PRP PHH O1%20234\r\n");
 	this.receive("PRP PHM 56%20789\r\n");
+	
 	this.assertEquals(this._mockClient.group, null);
 	this.receive("LSG 0 Sifth\r\n");
 	this.assertNotNull('Group is null and should be setted as Sifth', this._mockClient.group);
@@ -82,6 +85,8 @@ function ProtocolTest_testSession(){
 	this.assertNotNull('Group is null and should be setted as Jedis', this._mockClient.group);
 	this.assertEquals('Invalid group id', '1', this._mockClient.group.group_id);
 	this.assertEquals('Invalid group name', 'Jedis', this._mockClient.group.name);
+	
+	//Add Emperor as a contact
 	this.assertEquals(this._mockClient.contact, null);
 	this.receive("LST emperor@empire.com Emperor 13 0\r\n");
 	this.assertNotNull('Contact is null and should be setted as emperor@empire.com', this._mockClient.contact);
@@ -90,6 +95,9 @@ function ProtocolTest_testSession(){
 	this.assertEquals('13', this._mockClient.contact.lists);
 	this.assertEquals('0', this._mockClient.contact.groups);
 	this.receive("BPR MOB Y\r\n");
+	
+	//Add Luke as a contact
+	this._mockClient.contact = null;
 	this.receive("LST luke@rebels.org Luke 3 1\r\n");
 	this.assertNotNull('Contact is null and should be setted as luke@rebels.org', this._mockClient.contact);
 	this.assertEquals(this._mockClient.contact.user, 'luke@rebels.org');
