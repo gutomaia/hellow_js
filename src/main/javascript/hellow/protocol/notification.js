@@ -163,6 +163,8 @@ Notification.prototype.chg = function () {
 }
 
 Notification.prototype.qry = function (chl) {
+	var digest = this.challenger(chl);
+	return "QRY " + this._trid + " " + this.CLIENT_IDCODE + " 32" + this.EL + digest;
 }
 
 Notification.prototype.challenger = function (chl) {
