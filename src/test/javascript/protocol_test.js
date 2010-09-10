@@ -108,6 +108,7 @@ function ProtocolTest_testSession(){
 	this.send("CHG 9 NLN 0\r\n");
 	this.receive("CHG 9 NLN 0\r\n");
 
+	//Challenger
 	this.receive("CHL 0 29409134351025259292\r\n");
 	this.send("QRY 10 msmsgs@msnmsgr.com 32\r\nd0c1178c689350104350d99f8c36ed9c");
 
