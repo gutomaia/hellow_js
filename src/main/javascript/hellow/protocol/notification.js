@@ -44,7 +44,7 @@ Notification.prototype.superConnect = Msnp.prototype.connect;
 Notification.prototype.connect = function (host, port){
 	this.superConnect(host,port);
 	this.send(this.ver());
-	//this.listen();
+	this.listen();
 }
 
 Notification.prototype.login = function (username, password) {
