@@ -37,12 +37,10 @@ XHRTweener.prototype.extractVarParams = function (params){
 	var parameters = params.split(',');
 	var keyvalue = null;
 	var map = {};
-	logger.log("parameters size "+ parameters.length);
 	for (var i=0; i < parameters.length;i++){
 		var cutter = parameters[i].indexOf("=");
 		var key = parameters[i].substring(0,cutter);
 		var value = parameters[i].substring(cutter+1,parameters[i].length);
-		logger.log("map."+key+"="+value);
 		key = (key == 'Passport1.4 da-status')?'daStatus':key;
 		key = (key == 'from-PP')?'fromPP':key;
 		eval("map."+key+"= value;");
