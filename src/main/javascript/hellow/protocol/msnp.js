@@ -27,10 +27,15 @@ Msnp.prototype.addCommandListener = function(commandListener){
 }
 
 Msnp.prototype.onCommandReceived = function (command) {
+	if (this._commandListener!=null){
+		this._commandListener.receivedCommand(command);
+	}
 }
 
 Msnp.prototype.onCommandSended = function (command) {
-	
+	if (this._commandListener!=null){
+		this._commandListener.sendedCommand(command);
+	}
 }
 
 Msnp.prototype.setConnectionHandle = function (connectionHandle){
@@ -44,7 +49,7 @@ Msnp.prototype.execute = function (){
 //final
 Msnp.prototype.send = function (command){
 	this._connectionHandle.send(command);
-//	this.onCommandSended(command);
+	this.onCommandSended(command);
 	this._trid++;
 }
 
@@ -60,8 +65,10 @@ Msnp.prototype.listen = function () {
 	var command = "";
 	while (this._connectionHandle.hasMoreCommands()){
 		command = this._connectionHandle.nextCommand();
-		this.execute(command);
-		//this.onCommandReceived(command);
+		if (command != null){
+			this.execute(command);
+			this.onCommandReceived(command);
+		}
 	}
 	this._connectionHandle.disconnect();
 }
