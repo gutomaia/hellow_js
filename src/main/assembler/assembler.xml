@@ -8,6 +8,7 @@
 				<include>hellow/protocol/msnp.js</include>
 				<include>hellow/protocol/notification.js</include>
 				<include>hellow/protocol/msnp8.js</include>
+				<include>lib/md5_crypt.js</include>
 			</includes>
 		</script>
 	</scripts>
