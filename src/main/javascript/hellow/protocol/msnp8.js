@@ -10,7 +10,7 @@
 function Msnp8(){
 	Notification.call(this);
 	this.execute = function (msg) {
-		command = msg.substring(0,3);
+		var command = msg.substring(0,3);
 		var params = msg.trim().split(' ');
 		switch(command){
 			case "VER":
