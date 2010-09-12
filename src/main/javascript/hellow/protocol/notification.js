@@ -27,6 +27,7 @@ function Notification () {
 	this._connectionListener = null;
 	this._contactListener = null;
 	this._presenceListener = null;	
+	this._callListener = null;
 }
 
 Notification.prototype = new Msnp();
@@ -67,13 +68,14 @@ Notification.prototype.addContactListener = function (contactListener){
 	this._contactListener = contactListener;
 }
 
-Notification.prototype.addContactListener = function (contactListener){
-	this._contactListener = contactListener;
-}
-
 Notification.prototype.addPresenceListener = function (presenceListener){
 	this._presenceListener = presenceListener;
 }
+
+Notification.prototype.addCallListener = function (callListener){
+	this._callListener = callListener;
+}
+
 
 //Connection
 Notification.prototype.onLogged = function (){
@@ -137,13 +139,12 @@ Notification.prototype.onContactOutLunch = function (contact){
 }
 
 //Call
-Notification.prototype.onRing(call, serverport, cki, username, nick) {
-	if (callListener != null) {
+Notification.prototype.onRing = function (call, serverport, cki, username, nick) {
+	if (this._callListener != null) {
 		var sp = serverport.split(":");
-		this.callListener.onRing(call, sp[0], sp[1], cki, username, nick);
+		this._callListener.onRing(call, sp[0], sp[1], cki, username, nick);
 	}
 }
-
 
 //abstract
 Notification.prototype.execute = function (command) {};
