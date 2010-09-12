@@ -87,6 +87,7 @@
 							<sourceDirectory>${basedir}/src/main/javascript</sourceDirectory>
 							<sources>
 								<source>lib/md5_crypt.js</source><!--not done by me -->
+								<source>hellow/core/message.js</source>
 								<source>hellow/protocol/websocket_connection.js</source>
 								<source>hellow/protocol/msnp.js</source>
 								<source>hellow/protocol/notification.js</source>
@@ -103,6 +104,7 @@
 									<type>TESTCASES</type>
 									<includes>
 										<include>protocol_test.js</include>
+										<include>message_test.js</include>
 									</includes>
 								</testSuite>
 							</testSuites>
