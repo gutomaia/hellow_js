@@ -136,6 +136,15 @@ Notification.prototype.onContactOutLunch = function (contact){
 	if(this._presenceListener != null) this._presenceListener.onContactOutLunch(contact);
 }
 
+//Call
+Notification.prototype.onRing(call, serverport, cki, username, nick) {
+	if (callListener != null) {
+		var sp = serverport.split(":");
+		this.callListener.onRing(call, sp[0], sp[1], cki, username, nick);
+	}
+}
+
+
 //abstract
 Notification.prototype.execute = function (command) {};
 
