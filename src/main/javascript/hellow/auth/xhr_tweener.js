@@ -1,5 +1,5 @@
 /*  HellowJs, alpha version
- *  (c) 2009 Gustavo Maia Neto (gutomaia)
+ *  (c) 2010 Gustavo Maia Neto (gutomaia)
  *
  *  HellowJs and all other Hellow flavors will be always
  *  freely distributed under the terms of an GPLv3 license.
@@ -32,6 +32,9 @@ XHRTweener.prototype.newXMLHttpRequest = function(){
 	}
 	return xhr;
 }
+
+
+// extractHttpResponseHeader
 
 XHRTweener.prototype.extractVarParams = function (params){
 	var parameters = params.split(',');
